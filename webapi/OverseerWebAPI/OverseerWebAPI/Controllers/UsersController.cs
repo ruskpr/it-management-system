@@ -27,7 +27,9 @@ namespace OverseerWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
-            return await _context.Users.ToListAsync();
+            var users = await _context.Users.ToListAsync();
+            
+            return users;
         }
 
         // GET: api/Users/5
