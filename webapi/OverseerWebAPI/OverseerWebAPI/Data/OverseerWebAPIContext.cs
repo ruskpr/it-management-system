@@ -16,5 +16,8 @@ namespace OverseerWebAPI.Data
 
         public DbSet<OverseerWebAPI.Models.Organization> Organizations { get; set; } = default!;
         public DbSet<OverseerWebAPI.Models.User> Users { get; set; } = default!;
+        public DbSet<OverseerWebAPI.Models.Ticket> Tickets { get; set; } = default!;
+        public DbSet<OverseerWebAPI.Models.TicketComment> TicketComments { get; set; } = default!;
+
     }
 }

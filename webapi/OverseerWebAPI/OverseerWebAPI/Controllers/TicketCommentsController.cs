@@ -12,29 +12,29 @@ namespace OverseerWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class TicketCommentsController : ControllerBase
     {
         private readonly OverseerWebAPIContext _context;
 
-        public UsersController(OverseerWebAPIContext context)
+        public TicketCommentsController(OverseerWebAPIContext context)
         {
             _context = context;
         }
 
         #region get
 
-        // GET: api/Users
+        // GET: api/TicketComments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUser()
+        public async Task<ActionResult<IEnumerable<TicketComment>>> GetTicketComment()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.TicketComments.ToListAsync();
         }
 
-        // GET: api/Users/5
+        // GET: api/TicketComments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<TicketComment>> GetTicketComment(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.TicketComments.FindAsync(id);
 
             if (user == null)
             {
@@ -48,10 +48,10 @@ namespace OverseerWebAPI.Controllers
 
         #region put
 
-        // PUT: api/Users/5
+        // PUT: api/TicketComments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutTicketComment(int id, TicketComment user)
         {
             if (id != user.Id)
             {
@@ -66,7 +66,7 @@ namespace OverseerWebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!TicketCommentExists(id))
                 {
                     return NotFound();
                 }
@@ -83,32 +83,32 @@ namespace OverseerWebAPI.Controllers
 
         #region post
 
-        // POST: api/Users
+        // POST: api/TicketComments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<TicketComment>> PostTicketComment(TicketComment user)
         {
-            _context.Users.Add(user);
+            _context.TicketComments.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetTicketComment", new { id = user.Id }, user);
         }
 
         #endregion
 
         #region delete
 
-        // DELETE: api/Users/5
+        // DELETE: api/TicketComments/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteTicketComment(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.TicketComments.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(user);
+            _context.TicketComments.Remove(user);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -116,9 +116,9 @@ namespace OverseerWebAPI.Controllers
 
         #endregion
 
-        private bool UserExists(int id)
+        private bool TicketCommentExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.TicketComments.Any(e => e.Id == id);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using OverseerWebAPI.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<OverseerWebAPIContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("OverseerWebAPIContext") ?? throw new InvalidOperationException("Connection string 'OverseerWebAPIContext' not found.")));
