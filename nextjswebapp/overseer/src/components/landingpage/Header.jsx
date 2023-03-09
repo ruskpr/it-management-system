@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
-import Modal from "@/utils/Modal";
+import Modal from "@/components/utils/Modal";
 import Image from "next/image";
 import { GrMenu } from "react-icons/gr";
-import Portal from "@/utils/Portal";
+import Portal from "@/components/utils/Portal";
 function Header() {
   const [top, setTop] = useState(true);
   const [menuModalOpen, setMenuModalOpen] = useState(false);
@@ -30,13 +30,16 @@ function Header() {
           <div className="flex-shrink-0 mr-4">
             {/* Logo */}
             <Link href="/">
-              <Image
+              {/* <Image
                 priority
                 src="/overseerlogo.svg"
                 height={64}
                 width={64}
                 alt="Overseer"
-              />
+              /> */}
+              <span className="text-3xl font-extrabold leading-tighter tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+                Overseer
+              </span>
             </Link>
           </div>
 
@@ -74,29 +77,29 @@ function Header() {
               id="modal"
               ariaLabel="modal-headline"
               show={menuModalOpen}
-              className=""
+              className="hidden sm:flex bg-black flex justify-center w-screen "
               handleClose={() => setMenuModalOpen(false)}
             >
-              <div className="relative bg-transparent w-full p-8 rounded-lg flex justify-center pb-9/16">
-                <div className="w-fit h-fit bg-transparent">
-                  <ul className="flex flex-col justify-center bg-transparent gap-3 h-fit flex-column items-center ">
-                    <li>
-                      <Button outline rounded>
-                        <Link href="/auth/signup">Home</Link>
-                      </Button>
-                    </li>
-                    <li>
-                      <Button outline rounded>
-                        <Link href="/auth/signup">Sign up</Link>
-                      </Button>
-                    </li>
-                    <li>
-                      <Button outline rounded>
-                        <Link href="/auth/login">Login</Link>
-                      </Button>
-                    </li>
-                  </ul>{" "}
-                </div>
+              <div className="w-fit h-fit bg-transparent flex justify-center">
+                <ul className="flex flex-col justify-center bg-transparent gap-3 h-fit flex-column items-center">
+                  <li>
+                    <Button neutral rounded>
+                      <Link href="/" target="_parent">
+                        Home
+                      </Link>
+                    </Button>
+                  </li>
+                  <li>
+                    <Button neutral rounded>
+                      <Link href="/auth/signup">Sign up</Link>
+                    </Button>
+                  </li>
+                  <li>
+                    <Button neutral rounded>
+                      <Link href="/auth/login">Login</Link>
+                    </Button>
+                  </li>
+                </ul>{" "}
               </div>
             </Modal>
           </Portal>

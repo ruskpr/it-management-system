@@ -13,13 +13,9 @@ function Footer() {
             <div className="mb-2">
               {/* Logo */}
               <Link href="/">
-                <Image
-                  priority
-                  src="/overseerlogo.svg"
-                  height={64}
-                  width={64}
-                  alt="Overseer"
-                />
+                <span className="text-3xl font-extrabold leading-tighter tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+                  Overseer
+                </span>
               </Link>
             </div>
             <div className="text-sm text-gray-600">

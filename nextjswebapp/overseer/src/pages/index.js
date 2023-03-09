@@ -1,11 +1,10 @@
-import Header from "../partials/Header";
-import HeroHome from "../partials/HeroHome";
-import FeaturesHome from "../partials/Features";
-import FeaturesBlocks from "../partials/FeaturesBlocks";
-import Testimonials from "../partials/Testimonials";
-import Newsletter from "../partials/Newsletter";
-import Footer from "../partials/Footer";
-import Banner from "../partials/Banner";
+import Header from "../components/landingpage/Header";
+import HeroHome from "../components/landingpage/HeroHome";
+import FeaturesBlocks from "../components/landingpage/FeaturesBlocks";
+import Testimonials from "../components/landingpage/Testimonials";
+import Newsletter from "../components/landingpage/Newsletter";
+import Footer from "../components/landingpage/Footer";
+import Banner from "../components/landingpage/Banner";
 
 export default function Home() {
   return (

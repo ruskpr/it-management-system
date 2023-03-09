@@ -18,88 +18,88 @@ function Testimonials() {
           </div>
 
           {/* logos */}
-          <div class="jsx-3730048229 images-logos-component ">
-            <div class="jsx-4012096777 logos new-layout">
-              <div class="jsx-4012096777 images-logos-wrapper">
-                <div class="images-gallery">
-                  <div class="jsx-160764463 images-gallery-row flex gap-5 flex-wrap justify-center mx-16">
-                    <div class="jsx-1848455873 image-gallery">
-                      <picture class="jsx-4212101279 picture-component social-proof-gallery-picture">
+          <div className="jsx-3730048229 images-logos-component ">
+            <div className="jsx-4012096777 logos new-layout">
+              <div className="jsx-4012096777 images-logos-wrapper">
+                <div className="images-gallery">
+                  <div className="jsx-160764463 images-gallery-row flex gap-5 flex-wrap justify-center mx-16">
+                    <div className="jsx-1848455873 image-gallery">
+                      <picture className="jsx-4212101279 picture-component social-proof-gallery-picture">
                         <img
                           alt="Genpact"
-                          class=" h-12 jsx-4212101279 "
+                          className=" h-12 jsx-4212101279 "
                           src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/genpact.png"
                         />
                       </picture>
                     </div>
-                    <div class=" h-12 jsx-1848455873 image-gallery">
-                      <picture class=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
+                    <div className=" h-12 jsx-1848455873 image-gallery">
+                      <picture className=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
                         <img
                           alt="HoltCat"
-                          class=" h-12 jsx-4212101279 "
+                          className=" h-12 jsx-4212101279 "
                           src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/HoltCat.png"
                         />
                       </picture>
                     </div>
-                    <div class=" h-12 jsx-1848455873 image-gallery">
-                      <picture class=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
+                    <div className=" h-12 jsx-1848455873 image-gallery">
+                      <picture className=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
                         <img
                           alt="Canva"
-                          class=" h-12 jsx-4212101279 "
+                          className=" h-12 jsx-4212101279 "
                           src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/canva.png"
                         />
                       </picture>
                     </div>
-                    <div class=" h-12 jsx-1848455873 image-gallery">
-                      <picture class=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
+                    <div className=" h-12 jsx-1848455873 image-gallery">
+                      <picture className=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
                         <img
                           alt="Coca Cola"
-                          class=" h-12 jsx-4212101279 "
+                          className=" h-12 jsx-4212101279 "
                           src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/coca_cola.png"
                         />
                       </picture>
                     </div>
-                    <div class=" h-12 jsx-1848455873 image-gallery">
-                      <picture class=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
+                    <div className=" h-12 jsx-1848455873 image-gallery">
+                      <picture className=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
                         <img
                           alt="Lionsgate"
-                          class=" h-12 jsx-4212101279 "
+                          className=" h-12 jsx-4212101279 "
                           src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/lionsgate.png"
                         />
                       </picture>
                     </div>
-                    <div class=" h-12 jsx-1848455873 image-gallery">
-                      <picture class=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
+                    <div className=" h-12 jsx-1848455873 image-gallery">
+                      <picture className=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
                         <img
                           alt="Hulu"
-                          class=" h-12 jsx-4212101279 "
+                          className=" h-12 jsx-4212101279 "
                           src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/hulu.png"
                         />
                       </picture>
                     </div>
-                    <div class=" h-12 jsx-1848455873 image-gallery">
-                      <picture class=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
+                    <div className=" h-12 jsx-1848455873 image-gallery">
+                      <picture className=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
                         <img
                           alt="BD"
-                          class=" h-12 jsx-4212101279 "
+                          className=" h-12 jsx-4212101279 "
                           src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/bd.png"
                         />
                       </picture>
                     </div>
-                    <div class=" h-12 jsx-1848455873 image-gallery">
-                      <picture class=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
+                    <div className=" h-12 jsx-1848455873 image-gallery">
+                      <picture className=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
                         <img
                           alt="Electronic Arts"
-                          class=" h-12 jsx-4212101279 "
+                          className=" h-12 jsx-4212101279 "
                           src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/Electronic_Arts.png"
                         />
                       </picture>
                     </div>
-                    <div class=" h-12 jsx-1848455873 image-gallery">
-                      <picture class=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
+                    <div className=" h-12 jsx-1848455873 image-gallery">
+                      <picture className=" h-12 jsx-4212101279 picture-component social-proof-gallery-picture">
                         <img
                           alt="Universal Music Group"
-                          class=" h-12 jsx-4212101279 "
+                          className=" h-12 jsx-4212101279 "
                           src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/universal.png"
                         />
                       </picture>

@@ -1,15 +1,10 @@
-import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import Transition from '../utils/Transition';
+import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+import Transition from "./Transition";
+import Button from "@/components/ui/Button";
+import { MdClose } from "react-icons/md";
 
-function Modal({
-  children,
-  id,
-  ariaLabel,
-  show,
-  handleClose
-}) {
-
+function Modal({ children, id, ariaLabel, show, handleClose }) {
   const modalContent = useRef(null);
 
   // close the modal on click outside
@@ -18,9 +13,9 @@ function Modal({
       if (!show || modalContent.current.contains(target)) return;
       handleClose();
     };
-    document.addEventListener('click', clickHandler);
-    return () => document.removeEventListener('click', clickHandler);
-  });  
+    document.addEventListener("click", clickHandler);
+    return () => document.removeEventListener("click", clickHandler);
+  });
 
   // close the modal if the esc key is pressed
   useEffect(() => {
@@ -28,16 +23,16 @@ function Modal({
       if (keyCode !== 27) return;
       handleClose();
     };
-    document.addEventListener('keydown', keyHandler);
+    document.addEventListener("keydown", keyHandler);
 
-    return () => document.removeEventListener('keydown', keyHandler);
-  });  
+    return () => document.removeEventListener("keydown", keyHandler);
+  });
 
   return (
     <>
       {/* Modal backdrop */}
       <Transition
-        className="fixed inset-0 z-50 bg-white bg-opacity-75 transition-opacity backdrop-blur-sm"
+        className="fixed inset-0 z-50 bg-white bg-opacity-75 transition-opacity backdrop-blur-sm sm:hidden"
         show={show}
         enter="transition ease-out duration-200"
         enterStart="opacity-0"
@@ -51,7 +46,7 @@ function Modal({
       {/* Modal dialog */}
       <Transition
         id={id}
-        className="fixed inset-0 z-50 overflow-hidden flex items-center justify-center transform px-4 sm:px-6"
+        className="fixed inset-0 z-50 overflow-hidden flex items-center justify-center transform px-4 sm:px-6 sm:hidden"
         role="dialog"
         aria-modal="true"
         aria-labelledby={ariaLabel}
@@ -63,10 +58,21 @@ function Modal({
         leaveStart="opacity-100 scale-100"
         leaveEnd="opacity-0 scale-95"
       >
-        <div className="bg-white overflow-auto max-w-6xl w-full max-h-full" ref={modalContent}>          
+        <div
+          onClick={() => {
+            handleClose();
+          }}
+          className="absolute top-3 right-3 text-5xl cursor-pointer"
+        >
+          <MdClose />
+        </div>
+        <div
+          className="flex justify-center overflow-auto max-w-6xl w-full max-h-full"
+          ref={modalContent}
+        >
           {children}
         </div>
-      </Transition>    
+      </Transition>
     </>
   );
 }
@@ -76,10 +82,10 @@ export default Modal;
 Modal.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element.isRequired
+    PropTypes.element.isRequired,
   ]),
   id: PropTypes.string,
   ariaLabel: PropTypes.string,
   show: PropTypes.bool.isRequired,
-  handleClose: PropTypes.func.isRequired
+  handleClose: PropTypes.func.isRequired,
 };
