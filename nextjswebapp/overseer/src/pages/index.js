@@ -1,18 +1,39 @@
-import Link from 'next/link';
-import Panel from "@/components/Panel";
-import Button from "@/components/ui/Button";
+import Header from "../partials/Header";
+import HeroHome from "../partials/HeroHome";
+import FeaturesHome from "../partials/Features";
+import FeaturesBlocks from "../partials/FeaturesBlocks";
+import Testimonials from "../partials/Testimonials";
+import Newsletter from "../partials/Newsletter";
+import Footer from "../partials/Footer";
+import Banner from "../partials/Banner";
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center bg-white pb-64">
-      <Panel className="m-8 h-fit">
-          <h1 className="text-4xl">Welcome to Overseer</h1>
-          <h2 className="text-2xl mb-16">Get started below</h2>
-          <div className="flex justify-center m-2 gap-3">
-            <Button rounded primary noBorder><Link href="/auth/signup">Sign up</Link></Button>
-            <Button rounded secondary noBorder><Link href="/auth/login">Login</Link></Button>
-          </div>
-        </Panel>
+    <div className="flex flex-col min-h-screen overflow-hidden">
+      {/*  Site header */}
+      <Header />
+
+      {/*  Page content */}
+      <main className="flex-grow">
+        {/*  Page sections */}
+        <HeroHome />
+        <FeaturesHome />
+        <FeaturesBlocks />
+        <Testimonials />
+        <Newsletter />
+      </main>
+
+      <Banner />
+
+      {/*  Site footer */}
+      <Footer />
     </div>
   );
 }
+
+// <Button rounded primary noBorder>
+//             <Link href="/auth/signup">Sign up</Link>
+//           </Button>
+//           <Button rounded secondary noBorder>
+//             <Link href="/auth/login">Login</Link>
+//           </Button>

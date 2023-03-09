@@ -85,6 +85,8 @@ export default function AdminPage() {
           <ul>{renderedTicketComments}</ul>
         </Panel>
       </div>
+
+      
     </div>
   );
 }
