@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import Modal from "@/utils/Modal";
 import Image from "next/image";
 import { GrMenu } from "react-icons/gr";
-
+import Portal from "@/utils/Portal";
 function Header() {
   const [top, setTop] = useState(true);
+  const [menuModalOpen, setMenuModalOpen] = useState(false);
 
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
@@ -41,7 +43,16 @@ function Header() {
           {/* Site navigation */}
           <nav className="flex flex-grow">
             <div className="flex flex-grow justify-end gap-3 flex-wrap items-center sm:hidden flex">
-              <Button className="border-0"><GrMenu className="text-3xl border-0" /></Button>
+              <Button
+                className="border-0"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setMenuModalOpen(true);
+                }}
+              >
+                <GrMenu className="text-3xl border-0" />
+              </Button>
             </div>
             <ul className="flex flex-grow justify-end gap-3 flex-wrap items-center hidden sm:flex">
               <li>
@@ -56,6 +67,39 @@ function Header() {
               </li>
             </ul>
           </nav>
+
+          {/* Modal */}
+          <Portal id="#menuPortal">
+            <Modal
+              id="modal"
+              ariaLabel="modal-headline"
+              show={menuModalOpen}
+              className=""
+              handleClose={() => setMenuModalOpen(false)}
+            >
+              <div className="relative bg-transparent w-full p-8 rounded-lg flex justify-center pb-9/16">
+                <div className="w-fit h-fit bg-transparent">
+                  <ul className="flex flex-col justify-center bg-transparent gap-3 h-fit flex-column items-center ">
+                    <li>
+                      <Button outline rounded>
+                        <Link href="/auth/signup">Home</Link>
+                      </Button>
+                    </li>
+                    <li>
+                      <Button outline rounded>
+                        <Link href="/auth/signup">Sign up</Link>
+                      </Button>
+                    </li>
+                    <li>
+                      <Button outline rounded>
+                        <Link href="/auth/login">Login</Link>
+                      </Button>
+                    </li>
+                  </ul>{" "}
+                </div>
+              </div>
+            </Modal>
+          </Portal>
         </div>
       </div>
     </header>
