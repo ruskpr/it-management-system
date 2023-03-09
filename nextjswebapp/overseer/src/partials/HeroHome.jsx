@@ -26,14 +26,27 @@ function HeroHome() {
                 Overseer
               </span>
             </h1>
+            <h1
+              className="text-3xl md:text-3xl leading-tighter tracking-tighter mb-8"
+              data-aos="zoom-y-out"
+            >
+              Manage your team the{" "}
+              <span className="text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+                smart
+              </span>{" "}
+              way
+            </h1>
             <div className="max-w-3xl mx-auto">
               <p
-                className="text-xl text-gray-600 mb-8"
+                className="text-xl text-gray-600 mb-16"
                 data-aos="zoom-y-out"
                 data-aos-delay="150"
               >
-                Our landing page template works on all devices, so you only have
-                to set it up once, and get beautiful results forever.
+                Develop and maintain highly effective, reliable, secure, and
+                innovative information systems to support instructional,
+                administrative and research functions. Facilitate the
+                collection, storage, security and integrity of electronic data
+                while ensuring appropriate access.
               </p>
               <div
                 className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
