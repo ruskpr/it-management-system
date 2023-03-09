@@ -15,7 +15,7 @@ export default function Button({
   }) {
 
   const styling = classnames(
-    "flex items-center text-lg font-bold px-5 py-2 border-2", // <-- default styles
+    "flex items-center text-lg font-bold px-5 py-2 border", // <-- default styles
     {
       "border-blue-400 bg-blue-500 text-white hover:bg-blue-600": primary,
       "border-gray-400 bg-gray-500 text-white hover:bg-gray-600": secondary,

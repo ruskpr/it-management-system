@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
+import { GrMenu } from "react-icons/gr";
 
 function Header() {
   const [top, setTop] = useState(true);
@@ -39,14 +40,17 @@ function Header() {
 
           {/* Site navigation */}
           <nav className="flex flex-grow">
-            <ul className="flex flex-grow justify-end gap-3 flex-wrap items-center">
+            <div className="flex flex-grow justify-end gap-3 flex-wrap items-center sm:hidden flex">
+              <Button className="border-0"><GrMenu className="text-3xl border-0" /></Button>
+            </div>
+            <ul className="flex flex-grow justify-end gap-3 flex-wrap items-center hidden sm:flex">
               <li>
-                <Button outline rounded noBorder>
+                <Button outline rounded>
                   <Link href="/auth/signup">Sign up</Link>
                 </Button>
               </li>
               <li>
-                <Button neutral rounded noBorder>
+                <Button neutral rounded>
                   <Link href="/auth/login">Login</Link>
                 </Button>
               </li>

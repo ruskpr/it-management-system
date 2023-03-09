@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Modal from "../utils/Modal";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
-import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
+import { HiArrowNarrowRight } from "react-icons/hi";
 
 function HeroHome() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
@@ -27,11 +27,11 @@ function HeroHome() {
               </span>
             </h1>
             <h1
-              className="text-3xl md:text-3xl leading-tighter tracking-tighter mb-8"
+              className="text-4xl md:text-4xl leading-tighter tracking-tighter mb-8"
               data-aos="zoom-y-out"
             >
               Manage your team the{" "}
-              <span className="text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+              <span className="text-4xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
                 smart
               </span>{" "}
               way
@@ -42,20 +42,18 @@ function HeroHome() {
                 data-aos="zoom-y-out"
                 data-aos-delay="150"
               >
-                Develop and maintain highly effective, reliable, secure, and
-                innovative information systems to support instructional,
-                administrative and research functions. Facilitate the
-                collection, storage, security and integrity of electronic data
-                while ensuring appropriate access.
+                Develop and maintain your team with a reliable and secure
+                groundwork to facilitate the collection, storage, security
+                and integrity of electronic data.
               </p>
               <div
-                className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
+                className="max-w-xs mx-auto sm:max-w-none  flex justify-center"
                 data-aos="zoom-y-out"
                 data-aos-delay="300"
               >
                 <div>
-                  <Button primary rounded noBorder>
-                    <Link href="/auth/signup">Get started</Link>
+                  <Button neutral rounded noBorder>
+                    <Link href="/auth/signup" className="flex items-center">Get started for free<span className="ml-3 text-2xl"><HiArrowNarrowRight/></span></Link>
                   </Button>
                 </div>
               </div>
@@ -74,9 +72,10 @@ function HeroHome() {
                 <Link
                   href="https://github.com/ruskpr/it-management-system"
                   className="flex items-center"
+                  target="_blank"
                 >
                   <FaGithub className="w-6 h-6  text-gray-400 flex-shrink-0" />
-
+              
                   <span className="ml-3">View us on Github</span>
                 </Link>
               </Button>
