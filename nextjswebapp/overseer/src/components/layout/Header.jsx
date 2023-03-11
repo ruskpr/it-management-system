@@ -24,17 +24,22 @@ function Header() {
 
   if (status === "authenticated") {
     navItems = (
-      <ul className="flex flex-grow justify-end gap-3 flex-wrap items-center hidden sm:flex">
+      <>
+        <li>
+          <Button primary rounded>
+            <Link href="/dashboard">Dashboard</Link>
+          </Button>
+        </li>
         <li>
           <Button neutral rounded onClick={() => signOut()}>
             Sign out
           </Button>
         </li>
-      </ul>
+      </>
     );
   } else {
     navItems = (
-      <ul className="flex flex-grow justify-end gap-3 flex-wrap items-center hidden sm:flex">
+      <>
         <li>
           <Button outline rounded>
             <Link href="/auth/signup">Sign up</Link>
@@ -45,7 +50,7 @@ function Header() {
             <Link href="/auth/login">Login</Link>
           </Button>
         </li>
-      </ul>
+      </>
     );
   }
 
@@ -111,16 +116,7 @@ function Header() {
                       </Link>
                     </Button>
                   </li>
-                  <li>
-                    <Button neutral rounded>
-                      <Link href="/auth/signup">Sign up</Link>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button neutral rounded>
-                      <Link href="/auth/login">Login</Link>
-                    </Button>
-                  </li>
+                  {navItems}
                 </ul>{" "}
               </div>
             </Modal>
