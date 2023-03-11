@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Modal from "@/components/utils/Modal";
-import Image from "next/image";
 import { GrMenu } from "react-icons/gr";
 import Portal from "@/components/utils/Portal";
+import { useSession, signOut } from "next-auth/react";
+
 function Header() {
   const [top, setTop] = useState(true);
   const [menuModalOpen, setMenuModalOpen] = useState(false);
+  const { data: session, status } = useSession();
 
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
@@ -18,10 +20,39 @@ function Header() {
     return () => window.removeEventListener("scroll", scrollHandler);
   }, [top]);
 
+  let navItems;
+
+  if (status === "authenticated") {
+    navItems = (
+      <ul className="flex flex-grow justify-end gap-3 flex-wrap items-center hidden sm:flex">
+        <li>
+          <Button neutral rounded onClick={() => signOut()}>
+            Sign out
+          </Button>
+        </li>
+      </ul>
+    );
+  } else {
+    navItems = (
+      <ul className="flex flex-grow justify-end gap-3 flex-wrap items-center hidden sm:flex">
+        <li>
+          <Button outline rounded>
+            <Link href="/auth/signup">Sign up</Link>
+          </Button>
+        </li>
+        <li>
+          <Button neutral rounded>
+            <Link href="/auth/login">Login</Link>
+          </Button>
+        </li>
+      </ul>
+    );
+  }
+
   return (
     <header
-      className={`fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out ${
-        !top && "bg-white backdrop-blur-sm shadow-lg"
+      className={`fixed w-full bg-white z-30 md:bg-opacity-90 transition duration-300 ease-in-out ${
+        !top && "bg-white bg-opacity-90 shadow-lg"
       }`}
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
@@ -58,16 +89,7 @@ function Header() {
               </Button>
             </div>
             <ul className="flex flex-grow justify-end gap-3 flex-wrap items-center hidden sm:flex">
-              <li>
-                <Button outline rounded>
-                  <Link href="/auth/signup">Sign up</Link>
-                </Button>
-              </li>
-              <li>
-                <Button neutral rounded>
-                  <Link href="/auth/login">Login</Link>
-                </Button>
-              </li>
+              {navItems}
             </ul>
           </nav>
 

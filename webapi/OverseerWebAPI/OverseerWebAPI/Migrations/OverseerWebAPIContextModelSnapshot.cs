@@ -40,7 +40,7 @@ namespace OverseerWebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Organizations");
+                    b.ToTable("Organizations", (string)null);
                 });
 
             modelBuilder.Entity("OverseerWebAPI.Models.Ticket", b =>
@@ -77,7 +77,7 @@ namespace OverseerWebAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Tickets");
+                    b.ToTable("Tickets", (string)null);
                 });
 
             modelBuilder.Entity("OverseerWebAPI.Models.TicketComment", b =>
@@ -107,7 +107,7 @@ namespace OverseerWebAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TicketComments");
+                    b.ToTable("TicketComments", (string)null);
                 });
 
             modelBuilder.Entity("OverseerWebAPI.Models.User", b =>
@@ -154,7 +154,7 @@ namespace OverseerWebAPI.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("OverseerWebAPI.Models.Ticket", b =>

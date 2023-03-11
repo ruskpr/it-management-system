@@ -10,6 +10,5 @@ namespace OverseerWebAPI.Models
         public string Name { get; set; }
         [Column(TypeName = "varchar(100)")]
         public string AccessKey { get; set; }
-        public List<User> Users { get; set; } = new List<User>();
     }
 }

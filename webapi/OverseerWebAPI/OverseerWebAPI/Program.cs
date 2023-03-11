@@ -5,7 +5,7 @@ using OverseerWebAPI.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors();
 builder.Services.AddDbContext<OverseerWebAPIContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("OverseerWebAPIContext") ?? throw new InvalidOperationException("Connection string 'OverseerWebAPIContext' not found.")));
+    options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("OverseerWebAPIContext") ?? throw new InvalidOperationException("Connection string 'OverseerWebAPIContext' not found.")));
 
 // Add services to the container.
 

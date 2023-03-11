@@ -1,9 +1,9 @@
-import Header from "../components/landingpage/Header";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 import HeroHome from "../components/landingpage/HeroHome";
 import FeaturesBlocks from "../components/landingpage/FeaturesBlocks";
 import Testimonials from "../components/landingpage/Testimonials";
 import Newsletter from "../components/landingpage/Newsletter";
-import Footer from "../components/landingpage/Footer";
 import Banner from "../components/landingpage/Banner";
 
 export default function Home() {
