@@ -28,7 +28,7 @@ export async function getServerSideProps(context) {
   if (!session) {
     return { redirect: { destination: "/auth/signup", permanent: false } };
   }
-
+Overseer
   // todo
   // if user belongs the current org show pages, if not show error (or redirect)
 
