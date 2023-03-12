@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OverseerWebAPI.Data;
 
@@ -11,9 +12,11 @@ using OverseerWebAPI.Data;
 namespace OverseerWebAPI.Migrations
 {
     [DbContext(typeof(OverseerWebAPIContext))]
-    partial class OverseerWebAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20230312001724_schemachange2")]
+    partial class schemachange2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,9 +44,14 @@ namespace OverseerWebAPI.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Organizations", (string)null);
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Organizations");
                 });
 
             modelBuilder.Entity("OverseerWebAPI.Models.Ticket", b =>
@@ -75,7 +83,7 @@ namespace OverseerWebAPI.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("Tickets", (string)null);
+                    b.ToTable("Tickets");
                 });
 
             modelBuilder.Entity("OverseerWebAPI.Models.TicketComment", b =>
@@ -105,7 +113,7 @@ namespace OverseerWebAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TicketComments", (string)null);
+                    b.ToTable("TicketComments");
                 });
 
             modelBuilder.Entity("OverseerWebAPI.Models.User", b =>
@@ -129,14 +137,16 @@ namespace OverseerWebAPI.Migrations
                     b.Property<string>("OrgRole")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<int?>("OrganizationId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("OrganizationId");
+                    b.ToTable("Users");
+                });
 
-                    b.ToTable("Users", (string)null);
+            modelBuilder.Entity("OverseerWebAPI.Models.Organization", b =>
+                {
+                    b.HasOne("OverseerWebAPI.Models.User", null)
+                        .WithMany("Organization")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("OverseerWebAPI.Models.Ticket", b =>
@@ -171,14 +181,7 @@ namespace OverseerWebAPI.Migrations
 
             modelBuilder.Entity("OverseerWebAPI.Models.User", b =>
                 {
-                    b.HasOne("OverseerWebAPI.Models.Organization", null)
-                        .WithMany("User")
-                        .HasForeignKey("OrganizationId");
-                });
-
-            modelBuilder.Entity("OverseerWebAPI.Models.Organization", b =>
-                {
-                    b.Navigation("User");
+                    b.Navigation("Organization");
                 });
 #pragma warning restore 612, 618
         }

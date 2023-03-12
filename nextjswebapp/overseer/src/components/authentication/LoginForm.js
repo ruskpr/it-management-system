@@ -1,17 +1,24 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import Button from "../ui/Button";
 import Spinner from "../ui/Spinner";
 import axios from "axios";
+import { createUser, getUsersData } from "@/api/usersApi";
+import { getOrgsData } from "@/api/orgsApi";
+import { useSession } from "next-auth/react";
 
 const baseUrl = "https://localhost:7083/";
-const endpoint = "api/Organizations";
+//const endpoint = "api/Organizations";
 
 export default function LoginForm() {
+  const { data: session, status } = useSession();
   const [loading, setLoading] = useState(false);
   const [inputs, setInputs] = useState({
     orgName: "",
     accessKey: "",
   });
+
+  const router = useRouter();
 
   const handleChange = (event) => {
     setInputs({ ...inputs, [event.target.name]: event.target.value });
@@ -23,20 +30,39 @@ export default function LoginForm() {
 
     //validate credentials here
     setLoading(true);
-      // get organizations
-      const res = await axios.get(baseUrl + endpoint).catch((e) => {
-        console.error(e);
-      });
-      console.log(res.data[0].name.toLocaleLowerCase())
-      console.log(inputs.orgName)
-      // compare api with inputs
-      for (var i = 0; i < res.data.length; i++){
-        if (res.data[i].name.toLocaleLowerCase() == inputs.orgName.toLocaleLowerCase()) {
-          console.log("tst")
-        }
-      }
+    // get organizations
+    const orgsData = await getOrgsData();
+    const usersData = await getUsersData();
 
-      setLoading(false);
+    let selectedOrg;
+    // compare api with inputs
+    for (var i = 0; i < orgsData.length; i++) {
+      if (
+        orgsData[i].name.toLocaleLowerCase() ===
+          inputs.orgName.toLocaleLowerCase() &&
+        orgsData[i].accessKey === inputs.accessKey
+      ) {
+
+        console.log(usersData);
+        selectedOrg = orgsData[i];
+
+
+        const newUser = {
+          name: session.user.name,
+          email: null,
+          bio: null,
+          orgRole: null,
+          organizationId: selectedOrg.id,
+        };
+
+        await createUser(newUser);
+        
+        router.push(`/dashboard/${selectedOrg.name.replaceAll(' ', '_')}`);
+        break;
+      }
+    }
+
+    setLoading(false);
   };
 
   return (

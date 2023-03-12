@@ -20,7 +20,6 @@ namespace OverseerWebAPI.Models
         public string? OrgRole { get; set; }
         //public bool IsOrgAdmin { get; set; } = false;
         //public bool IsSuperuser { get; set; } = false;
-        //public int OrganizationId { get; set; }
-        public virtual Organization Organization { get; set; }
+        public virtual int OrganizationId { get; set; }
     }
 }

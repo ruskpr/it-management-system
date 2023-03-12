@@ -18,9 +18,9 @@ const getOrgById = async (id) => {
     console.error(e);
   });
   //console.log("response:\n");
-  console.log(org.data);
+  console.log(org.data.name);
 
-  return org.data;
+  return org.data.name;
 };
 
 // const getOrgNameById = async (id) => {

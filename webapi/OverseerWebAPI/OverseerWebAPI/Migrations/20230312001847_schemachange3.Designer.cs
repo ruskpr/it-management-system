@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OverseerWebAPI.Data;
 
@@ -11,9 +12,11 @@ using OverseerWebAPI.Data;
 namespace OverseerWebAPI.Migrations
 {
     [DbContext(typeof(OverseerWebAPIContext))]
-    partial class OverseerWebAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20230312001847_schemachange3")]
+    partial class schemachange3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +46,7 @@ namespace OverseerWebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Organizations", (string)null);
+                    b.ToTable("Organizations");
                 });
 
             modelBuilder.Entity("OverseerWebAPI.Models.Ticket", b =>
@@ -75,7 +78,7 @@ namespace OverseerWebAPI.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("Tickets", (string)null);
+                    b.ToTable("Tickets");
                 });
 
             modelBuilder.Entity("OverseerWebAPI.Models.TicketComment", b =>
@@ -105,7 +108,7 @@ namespace OverseerWebAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TicketComments", (string)null);
+                    b.ToTable("TicketComments");
                 });
 
             modelBuilder.Entity("OverseerWebAPI.Models.User", b =>
@@ -136,7 +139,7 @@ namespace OverseerWebAPI.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("OverseerWebAPI.Models.Ticket", b =>

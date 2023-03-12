@@ -21,7 +21,7 @@ namespace OverseerWebAPI.Models
 
         public bool IsActive { get; set; }
 
-        public virtual User User { get; set; }
+        //public virtual User User { get; set; }
 
         public virtual Organization Organization { get; set; }
     }

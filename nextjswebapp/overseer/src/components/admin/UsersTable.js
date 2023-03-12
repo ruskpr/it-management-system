@@ -3,6 +3,7 @@ import Panel from "../ui/Panel";
 import Spinner from "../ui/Spinner";
 import axios from "axios";
 import Table from "../ui/Table";
+import { getOrgById } from "@/api/orgsApi";
 
 const baseUrl = "https://localhost:7083/";
 const endpoint = "api/Users/";
@@ -37,7 +38,7 @@ export default function UsersTable() {
     },
     {
       label: "Name", // 'label' is the column name
-      render: (dataObj) => dataObj.firstName + " " + dataObj.lastName, // what ever is after the arrow function will be rendered
+      render: (dataObj) => dataObj.name, // what ever is after the arrow function will be rendered
     },
     {
       label: "Email",
@@ -45,7 +46,7 @@ export default function UsersTable() {
     },
     {
         label: "Organization",
-        render: (dataObj) => dataObj.organization.name,
+        render: (dataObj) => dataObj.organizationId,
       },
   ];
 
