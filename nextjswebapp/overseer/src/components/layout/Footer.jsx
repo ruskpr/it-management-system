@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import OverseerLogo from "../ui/OverseerLogo";
 
 function Footer() {
   return (
@@ -13,9 +14,7 @@ function Footer() {
             <div className="mb-2">
               {/* Logo */}
               <Link href="/">
-                <span className="text-3xl font-extrabold leading-tighter tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-                  Overseer
-                </span>
+                <OverseerLogo className="text-2xl"/>
               </Link>
             </div>
             <div className="text-sm text-gray-600">

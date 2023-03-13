@@ -8,12 +8,12 @@ import { useSession } from "next-auth/react";
 function HeroHome() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const { data: session, status } = useSession();
- 
+
   let headerOne;
   let headerTwo;
   let desc;
   let button;
-  
+
   // hero content
   if (status === "authenticated") {
     headerOne = (
@@ -30,7 +30,7 @@ function HeroHome() {
     desc = "";
     button = (
       <Button neutral rounded noBorder>
-        <Link href="/dashboard" className="flex items-center">
+        <Link href="/dashboard/login" className="flex items-center">
           Go to my dashboard
           <span className="ml-3 text-2xl">
             <HiArrowNarrowRight />
@@ -126,7 +126,7 @@ function HeroHome() {
                 >
                   <FaGithub className="w-6 h-6  text-gray-400 flex-shrink-0" />
 
-                  <span className="ml-3">View us on Github</span>
+                  <span className="ml-3">View Overseer on Github</span>
                 </Link>
               </Button>
             </div>

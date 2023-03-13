@@ -2,9 +2,10 @@ import { signIn, signOut, getSession, useSession } from "next-auth/react";
 import Button from "@/components/ui/Button";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import LoginForm from "@/components/authentication/LoginForm";
+import LoginForm from "@/components/dashboard/LoginForm";
+import ProfileCard from "@/components/ui/ProfileCard";
 
-export default function LoginPage() {
+export default function DashboardLoginPage() {
   const { data: session, status } = useSession();
 
   let content;
@@ -15,13 +16,17 @@ export default function LoginPage() {
   return (
     <>
       <Header />
-      <div className="max-w-6xl mx-auto flex-col gap-3 justify-center py-32">
-        <div className="m-6">
-          <h1 className="text-3xl font-bold m-8">Login to your team</h1>
-          <p className="m-8">Signed in as {session.user.name}</p>
-          <div className="ml-8">
-            <LoginForm />
+      <div className="max-w-6xl mx-auto py-32">
+        <div className="flex flex-col sm:flex-row gap-3 px-6 sm:justify-around items-center">
+          <div className="flex flex-col text-center font-medium">
+            <span className="mb-2">Signed in as:</span>
+            <ProfileCard
+              img={session.user.image}
+              name={session.user.name}
+              email={session.user.email}
+            />
           </div>
+          <LoginForm />
         </div>
       </div>
 

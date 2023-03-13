@@ -5,6 +5,7 @@ import Modal from "@/components/utils/Modal";
 import { GrMenu } from "react-icons/gr";
 import Portal from "@/components/utils/Portal";
 import { useSession, signOut } from "next-auth/react";
+import OverseerLogo from "../ui/OverseerLogo";
 
 function Header() {
   const [top, setTop] = useState(true);
@@ -27,7 +28,7 @@ function Header() {
       <>
         <li>
           <Button primary rounded>
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/dashboard/login">Dashboard</Link>
           </Button>
         </li>
         <li>
@@ -47,7 +48,7 @@ function Header() {
         </li>
         <li>
           <Button neutral rounded>
-            <Link href="/auth/login">Login</Link>
+            <Link href="/dashboard/login">Login</Link>
           </Button>
         </li>
       </>
@@ -66,16 +67,7 @@ function Header() {
           <div className="flex-shrink-0 mr-4">
             {/* Logo */}
             <Link href="/">
-              {/* <Image
-                priority
-                src="/overseerlogo.svg"
-                height={64}
-                width={64}
-                alt="Overseer"
-              /> */}
-              <span className="text-3xl font-extrabold leading-tighter tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-                Overseer
-              </span>
+              <OverseerLogo className="text-3xl" />
             </Link>
           </div>
 

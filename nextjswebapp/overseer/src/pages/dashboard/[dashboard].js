@@ -9,7 +9,7 @@ import Header from "@/components/layout/Header";
 export default function DashboardPage() {
   const router = useRouter();
   const { data: session, status } = useSession();
-  const teamName = router.query.teamname.replaceAll("_", " ");
+  const teamName = router.query.dashboard.replaceAll("_", " ");
 
   if (userExistsInOrg(session.user.name, teamName)) {
   }
@@ -28,7 +28,7 @@ export async function getServerSideProps(context) {
   if (!session) {
     return { redirect: { destination: "/auth/signup", permanent: false } };
   }
-Overseer
+  //Overseer;
   // todo
   // if user belongs the current org show pages, if not show error (or redirect)
 
