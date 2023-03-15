@@ -3,7 +3,6 @@ import Panel from "../ui/Panel";
 import Spinner from "../ui/Spinner";
 import axios from "axios";
 import Table from "../ui/Table";
-import { getOrgById } from "@/api/orgsApi";
 
 const baseUrl = "https://localhost:7083/";
 const endpoint = "api/Users/";

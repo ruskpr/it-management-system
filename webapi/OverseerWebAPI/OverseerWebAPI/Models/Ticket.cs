@@ -13,6 +13,10 @@ namespace OverseerWebAPI.Models
         public string Title { get; set; }
 
         [Required]
+        [Column(TypeName = "varchar(50)")]
+        public string TicketType { get; set; }
+
+        [Required]
         [Column(TypeName = "varchar(100)")]
         public string Description { get; set; }
 

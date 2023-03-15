@@ -40,9 +40,8 @@ export default function AdminPage() {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-
-  if (!session) {
-    return { redirect: { destination: "/auth/login", permanent: false } };
+    if (!session || session.user.name !== "Russ Koprulu") {
+    return { redirect: { destination: "/auth/signup", permanent: false } };
   }
 
   return {
