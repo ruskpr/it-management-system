@@ -13,20 +13,24 @@ namespace OverseerWebAPI.Models
         public string Title { get; set; }
 
         [Required]
-        [Column(TypeName = "varchar(50)")]
-        public string TicketType { get; set; }
-
-        [Required]
-        [Column(TypeName = "varchar(100)")]
+        [Column(TypeName = "varchar(500)")]
         public string Description { get; set; }
 
         [Required]
         public DateTime DateAdded { get; set; }
 
+        [Required]
         public bool IsActive { get; set; }
 
-        //public virtual User User { get; set; }
+        [Required]
+        [Column(TypeName = "varchar(100)")]
+        public string Creator { get; set; }
 
-        public virtual Organization Organization { get; set; }
+        [Required]
+        public int OrganizationId { get; set; }
+
+        [Required]
+        [Column(TypeName = "varchar(50)")]
+        public string Type { get; set; } // Foreign Key of Categories table
     }
 }

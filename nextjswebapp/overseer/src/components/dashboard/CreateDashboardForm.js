@@ -61,7 +61,8 @@ export default function CreateDashboardForm() {
     const newOrg = {
       name: inputs.orgName,
       accessKey: sha256(inputs.accessKey),
-      user: [],
+      tickets: [],
+      users: [],
     };
 
     await createOrg(newOrg);

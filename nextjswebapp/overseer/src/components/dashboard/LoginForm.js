@@ -2,17 +2,13 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Button from "../ui/Button";
 import Spinner from "../ui/Spinner";
-import axios from "axios";
-import { createUser, getUsersData } from "@/api/usersApi";
+import { createUser } from "@/api/usersApi";
 import { getOrgsData } from "@/api/orgsApi";
 import { useSession } from "next-auth/react";
 import { sha256 } from "js-sha256";
 
-const baseUrl = "https://localhost:7083/";
-//const endpoint = "api/Organizations";
-
 export default function LoginForm() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const [inputs, setInputs] = useState({
     orgName: "",
@@ -50,8 +46,9 @@ export default function LoginForm() {
           bio: null,
           orgRole: null,
           organizationId: selectedOrg.id,
+          organization: selectedOrg,
         };
-
+        console.log(newUser);
         await createUser(newUser);
 
         // go to home page

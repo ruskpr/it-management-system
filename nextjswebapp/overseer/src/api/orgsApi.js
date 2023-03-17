@@ -48,17 +48,15 @@ const createOrg = async (orgObj) => {
     }
   }
 
-  const response = await axios.post(baseUrl + endpoint, orgObj);
+  const response = await axios.post(baseUrl + endpoint, orgObj).catch((e) => {
+    console.error(e.response);
+  });
   console.log(response);
 };
 
-// const getOrgNameById = async (id) => {
-//     const org = await axios.get(`${baseUrl}${endpoint}/${id}`).catch((e) => {
-//       console.error(e);
-//     });
-//     console.log(org.data.name);
+const updateOrg = async (orgObj) => {
+  const response = await axios.put(baseUrl + endpoint, orgObj);
+  console.log(response);
+};
 
-//     return org.data.name;
-//   };
-
-export { getOrgsData, getOrgById, createOrg, getOrgByName };
+export { getOrgsData, getOrgById, createOrg, getOrgByName, updateOrg };

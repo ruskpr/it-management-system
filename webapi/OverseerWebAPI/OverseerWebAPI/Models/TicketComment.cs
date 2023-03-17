@@ -15,9 +15,14 @@ namespace OverseerWebAPI.Models
         [Required]
         public DateTime DateAdded { get; set; }
 
-        public virtual Ticket Ticket { get; set; }
+        [Required]
+        public int TicketId { get; set; }
 
-        public virtual User User { get; set; }
+        [Required]
+        public int CreatorId { get; set; }
+
+        [Required]
+        public int OrganizationId { get; set; }
 
     }
 }

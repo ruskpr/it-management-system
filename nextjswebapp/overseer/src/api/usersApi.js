@@ -4,11 +4,10 @@ const baseUrl = "https://localhost:7083/";
 const endpoint = "api/Users/";
 
 const getUsersData = async () => {
-  const users = await axios.get(baseUrl + endpoint).catch((e) => {
-    console.error(e);
+  const res = await axios.get(baseUrl + endpoint).catch((e) => {
+    console.error(e.response);
   });
-
-  return users.data;
+  return res.data;
 };
 
 const createUser = async (userObj) => {
@@ -25,7 +24,9 @@ const createUser = async (userObj) => {
     }
   }
 
-  const response = await axios.post(baseUrl + endpoint, userObj);
+  const response = await axios.post(baseUrl + endpoint, userObj).catch((e) => {
+    console.error(e.response);
+  });
   console.log(response);
 };
 
@@ -36,7 +37,7 @@ const userExistsInOrg = async (name, OrgId) => {
   for (var i = 0; i < users.length; i++) {
     if (
       users[i].name === name &&
-      users[i].organizationId == OrgId
+      users[i].organizationId === OrgId
     ) {
       return true;
     }

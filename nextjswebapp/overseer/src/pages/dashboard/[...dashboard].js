@@ -3,12 +3,10 @@ import { useEffect, useState } from "react";
 import { useSession, getSession } from "next-auth/react";
 import { userExistsInOrg } from "@/api/usersApi";
 import { getOrgByName } from "@/api/orgsApi";
-import Header from "@/components/layout/Header";
-import Sidebar from "@/components/dashboard/Sidebar";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import DashboardHome from "@/components/dashboard/content/DashboardHome";
-import DashboardAnnouncments from "@/components/dashboard/content/DashboardAnnouncements";
-import DashboardTickets from "@/components/dashboard/content/DashboardTickets";
-import DashboardIssues from "@/components/dashboard/content/DashboardIssues";
+import DashboardTickets from "@/components/dashboard/content/tickets/DashboardTicketsPage";
+import DashboardUsers from "@/components/dashboard/content/DashboardUsers";
 
 export default function DashboardPage() {
   const [org, setOrg] = useState({});
@@ -35,31 +33,21 @@ export default function DashboardPage() {
     case "home":
       content = <DashboardHome orgId={org.id} />;
       break;
-    case "announcements":
-      content = <DashboardAnnouncments orgId={org.id} />;
-      break;
     case "tickets":
       content = <DashboardTickets org={org} />;
       break;
-    case "issues":
-      content = <DashboardIssues orgId={org.id} />;
+    case "users":
+      content = <DashboardUsers orgId={org.id} />;
       break;
     default:
       router.push("/dashboard/login");
       break;
   }
 
-  if (userExistsInOrg(session.user.name, dashboardName)) {
-    // return (
-    //   <>
-    //     <div>not found</div>
-    //   </>
-    // );
-  }
   return (
-    <div className="flex">
-      <Sidebar org={dashboardName} />
-      {content}
+    <div>
+      <DashboardHeader org={dashboardName} />
+      <div className="max-w-6xl container mx-auto">{content}</div>
     </div>
   );
 }
@@ -69,9 +57,6 @@ export async function getServerSideProps(context) {
   if (!session) {
     return { redirect: { destination: "/auth/signup", permanent: false } };
   }
-  //Overseer;
-  // todo
-  // if user belongs the current org show pages, if not show error (or redirect)
 
   return {
     props: { session },

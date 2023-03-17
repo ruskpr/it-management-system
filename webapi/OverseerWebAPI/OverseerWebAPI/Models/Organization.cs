@@ -16,8 +16,6 @@ namespace OverseerWebAPI.Models
         [Column(TypeName = "varchar(100)")]
         public string AccessKey { get; set; }
 
-        [Required]
-        public virtual List<User> User { get; set; }
 
     }
 }
