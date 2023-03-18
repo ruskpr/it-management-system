@@ -6,7 +6,7 @@ import capitalize from "@/helpers/capitalize";
 
 export default function DashboardHeader({ org }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 w-screen md:h-24 h-16 bg-gray-800 text-white">
+    <div className="grid grid-cols-1 md:grid-cols-3 w-full md:h-24 h-16 bg-gray-800 text-white">
       {/* back button */}
       <Link href="/dashboard/login" className="static md-absolute">
         <IoArrowBackOutline className="text-4xl hover:text-gray-600" />
