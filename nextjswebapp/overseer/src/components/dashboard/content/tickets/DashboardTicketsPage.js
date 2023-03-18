@@ -9,11 +9,11 @@ import {
   BsChevronDown,
   BsChevronLeft,
   BsFillPlusCircleFill,
+  BsEmojiDizzy,
 } from "react-icons/bs";
 
 export default function DashboardTicketsPage({ org }) {
   const [tickets, setTickets] = useState([]);
-
   // fetch tickets data on first render
   useEffect(() => {
     const fetchTickets = async () => {
@@ -24,11 +24,25 @@ export default function DashboardTicketsPage({ org }) {
     fetchTickets();
   }, []);
 
-  console.log(tickets);
   // create list items from tickets data
-  const renderedTickets = tickets.map((ticket) => {
-    return <TicketListItem key={ticket.id} ticket={ticket} />;
-  });
+  let renderedTickets;
+
+  if (!tickets) {
+    renderedTickets = <div>Loading...</div>;
+  } else if (tickets.length === 0) {
+    renderedTickets = (
+      <div className="flex flex-col items-center justify-center w-full h-64">
+        <BsEmojiDizzy className="text-6xl text-gray-300" />
+        <h2 className="mt-3 text-2xl font-bold text-gray-300 text-center">
+          No tickets found, try searching for something else
+        </h2>
+      </div>
+    );
+  } else {
+    renderedTickets = tickets.map((ticket) => {
+      return <TicketListItem key={ticket.id} ticket={ticket} />;
+    });
+  }
 
   return (
     <div className="w-full p-3">
@@ -38,15 +52,19 @@ export default function DashboardTicketsPage({ org }) {
         </h1>
         <div>
           <div className="my-1">
-            <TicketCreateForm />
+            <TicketCreateForm org={org} setTickets={setTickets} />
           </div>
           <div className="my-1">
-            <TicketFilterForm />
+            <TicketFilterForm setTickets={setTickets} />
           </div>
         </div>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-8">
+        <h2 className="text-2xl font-light mb-2">
+          Currently showing {tickets.length} ticket{tickets.length === 1 || "s"}{" "}
+          for {capitalize(org.name || "")}
+        </h2>
         <ContentList>{renderedTickets}</ContentList>
       </div>
     </div>

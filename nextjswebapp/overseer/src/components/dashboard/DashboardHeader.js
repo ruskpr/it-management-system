@@ -18,7 +18,7 @@ export default function DashboardHeader({ org }) {
           <span className="font-light text-gray-300"> Dashboard</span>
         </div>
         <div className="text-center font-bold">
-          <h1>{capitalize(org)}</h1>
+          <h1>{org.name}</h1>
         </div>
       </div>
 
@@ -26,19 +26,19 @@ export default function DashboardHeader({ org }) {
       <div className="flex h-full items-center justify-center">
         <DashboardNavItem
           className="px-2"
-          href={`/dashboard/${org.replace(" ", "_")}/home`}
+          href={`/dashboard/${org.id}/home`}
         >
           Home
         </DashboardNavItem>
         <DashboardNavItem
           className="px-2"
-          href={`/dashboard/${org.replace(" ", "_")}/tickets`}
+          href={`/dashboard/${org.id}/tickets`}
         >
           Tickets
         </DashboardNavItem>
         <DashboardNavItem
           className="px-2"
-          href={`/dashboard/${org.replace(" ", "_")}/users`}
+          href={`/dashboard/${org.id}/users`}
         >
           Users
         </DashboardNavItem>

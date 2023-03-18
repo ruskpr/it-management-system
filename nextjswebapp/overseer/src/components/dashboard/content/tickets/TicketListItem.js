@@ -16,8 +16,11 @@ export default function TicketListItem({ ticket }) {
   };
 
   return (
-    <li className="block w-full p-6 mb-3 bg-white border border-gray-200 rounded shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+    <li className="block w-full p-6 mb-3 bg-white border border-gray-200 
+    rounded shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700
+     dark:hover:bg-gray-700">
+      <h5 className="text-2xl font-bold tracking-tight text-gray-900 
+      dark:text-white">
         {capitalize(ticket.type)} - <span className="font-normal">{capitalize(ticket.title || "No title")}</span>
       </h5>
 
@@ -30,11 +33,11 @@ export default function TicketListItem({ ticket }) {
       <p className="my-3 font-normal text-xl text-white">
         {ticket.description || "No description"}
       </p>
-      <p className="font-normal text-gray-300">
-        <div className="cursor-pointer" onClick={handleActiveToggle}>
+      <div className="font-normal text-gray-300">
+        <div className="cursor-pointer w-24" onClick={handleActiveToggle}>
           {active ? "Active🟢" : "Inactive🔘"}
         </div>
-      </p>
+      </div>
     </li>
   );
 }

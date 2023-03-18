@@ -52,7 +52,7 @@ export default function LoginForm() {
         await createUser(newUser);
 
         // go to home page
-        router.push(`/dashboard/${selectedOrg.name.replaceAll(" ", "_")}/home`);
+        router.push(`/dashboard/${selectedOrg.id}/home`);
         return;
       }
     }

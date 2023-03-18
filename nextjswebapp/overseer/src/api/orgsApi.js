@@ -3,25 +3,26 @@ import axios from "axios";
 const baseUrl = "https://localhost:7083/";
 const endpoint = "api/Organizations/";
 
+// gets list of all orgs from api
 const getOrgsData = async () => {
-  const orgs = await axios.get(baseUrl + endpoint).catch((e) => {
+  const res = await axios.get(baseUrl + endpoint).catch((e) => {
     console.error(e);
   });
   //console.log("response:\n");
-  //console.log(orgs.data);
+  //console.log(res.data);
 
-  return orgs.data;
+  return res.data;
 };
 
+// returns single org object
 const getOrgById = async (id) => {
   const org = await axios.get(`${baseUrl}${endpoint}${id}`).catch((e) => {
     console.error(e);
   });
-  //console.log("response:\n");
-  console.log(org);
 
-  return org;
+  return org.data;
 };
+
 const getOrgByName = async (orgName) => {
   const orgs = await axios.get(`${baseUrl}${endpoint}`).catch((e) => {
     console.error(e);
@@ -51,12 +52,12 @@ const createOrg = async (orgObj) => {
   const response = await axios.post(baseUrl + endpoint, orgObj).catch((e) => {
     console.error(e.response);
   });
-  console.log(response);
+  // console.log(response);
 };
 
 const updateOrg = async (orgObj) => {
   const response = await axios.put(baseUrl + endpoint, orgObj);
-  console.log(response);
+  // console.log(response);
 };
 
 export { getOrgsData, getOrgById, createOrg, getOrgByName, updateOrg };

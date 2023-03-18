@@ -27,7 +27,7 @@ namespace OverseerWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicket()
         {
-            return await _context.Tickets.ToListAsync();
+            return await _context.Tickets.OrderByDescending(x => x.DateAdded).ToListAsync();
         }
 
         // GET: api/Tickets/5

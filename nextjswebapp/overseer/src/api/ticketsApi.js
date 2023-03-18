@@ -20,7 +20,7 @@ const getTicketsByOrg = async (orgId) => {
 };
 
 const createTicket = async (ticketObj) => {
-  console.log(ticketObj);
+  //console.log(ticketObj);
   const response = await axios
     .post(baseUrl + endpoint, ticketObj)
     .catch((e) => {

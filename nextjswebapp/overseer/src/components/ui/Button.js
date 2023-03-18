@@ -24,7 +24,7 @@ export default function Button({
       "border-green-400 bg-green-500 text-white hover:bg-green-600": success,
       "border-yellow-400 bg-yellow-500 text-white hover:bg-yellow-600": warning,
       "border-red-400 bg-red-500 text-white hover:bg-red-600": danger,
-      "rounded-full": rounded,
+      "rounded": rounded,
       "bg-transparent hover:bg-transparent": outline,
       "text-blue-300": outline && primary,
       "text-gray-800": outline && secondary,

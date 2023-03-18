@@ -10,7 +10,7 @@ import {
   BsFillPlusCircleFill,
 } from "react-icons/bs";
 
-export default function TicketCreateForm({ org }) {
+export default function TicketCreateForm({ org, setTickets }) {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const [showCreateFrom, setShowCreateForm] = useState(false);
@@ -20,6 +20,7 @@ export default function TicketCreateForm({ org }) {
     description: "",
     ticketType: "",
   });
+
   const handleChange = (event) => {
     setInputs({ ...inputs, [event.target.name]: event.target.value });
   };
@@ -47,6 +48,8 @@ export default function TicketCreateForm({ org }) {
     };
 
     await createTicket(newTicket);
+    // update tickets
+    setTickets((prev) => [newTicket, ...prev]);
 
     setLoading(false);
 
@@ -85,11 +88,10 @@ export default function TicketCreateForm({ org }) {
         {/* Title */}
         <label className="pl-2 text-md font-medium text-white">
           Title
-          <span className="text-gray-400">
-            {" "}({inputs.title.length}/100)
-          </span>
+          <span className="text-gray-400"> ({inputs.title.length}/100)</span>
         </label>
         <input
+          maxLength={100}
           className="w-full pl-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
           name="title"
           onChange={handleChange}
@@ -104,21 +106,24 @@ export default function TicketCreateForm({ org }) {
         </label>
         <textarea
           maxLength={500}
-          className="w-full pl-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+          className="w-full pl-3 py-2 mb-3 leading-tight text-gray-700 
+          border rounded shadow appearance-none focus:outline-none 
+          focus:shadow-outline"
           name="description"
           onChange={handleChange}
           value={inputs.description}
         />
         {/* ticket type */}
         <label className="pl-2 text-md font-medium text-gray-900 text-white">
-          Ticket Type <span className="text-gray-400">Required</span>
+          Ticket Type
         </label>
         <br />
         <select
           name="ticketType"
           id=""
           onChange={handleChange}
-          className=" pl-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow focus:outline-none focus:shadow-outline"
+          className=" pl-3 py-2 mb-3 leading-tight text-gray-700 
+          border rounded shadow focus:outline-none focus:shadow-outline"
         >
           <option value="">none selected</option>
           <option value="question">Question</option>
@@ -144,9 +149,9 @@ export default function TicketCreateForm({ org }) {
   }
 
   return (
-    <div className="bg-gray-800 rounded cursor-pointer">
+    <div className="bg-gray-800 rounded">
       <div
-        className="flex h-8 text-xl text-white font-bold pl-3 items-center justify-between w-full bg-gray-800 rounded"
+        className="flex h-8 text-xl cursor-pointer text-white font-bold pl-3 items-center justify-between w-full bg-gray-800 rounded"
         onClick={() => setShowCreateForm(!showCreateFrom)}
       >
         <div className="flex items-center">
