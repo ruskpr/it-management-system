@@ -31,12 +31,28 @@ const createTicket = async (ticketObj) => {
   //console.log(response);
 };
 
-const updateTicket = async (ticketObj) => {
-  const response = await axios.put(baseUrl + endpoint + ticketObj.id, ticketObj)
-    .catch((e) => {
-    console.error(e.response);
-    return;
+// get ticket by id
+const getTicketById = async (ticketId) => {
+  const ticket = await axios.get(baseUrl + endpoint + ticketId).catch((e) => {
+    console.error(e);
   });
+
+  return ticket.data;
 };
 
-export { updateTicket, createTicket, getTicketsData, getTicketsByOrg };
+const updateTicket = async (ticketObj) => {
+  const response = await axios
+    .put(baseUrl + endpoint + ticketObj.id, ticketObj)
+    .catch((e) => {
+      console.error(e.response);
+      return;
+    });
+};
+
+export {
+  updateTicket,
+  createTicket,
+  getTicketsData,
+  getTicketsByOrg,
+  getTicketById,
+};

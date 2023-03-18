@@ -6,6 +6,7 @@ import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import DashboardHome from "@/components/dashboard/content/DashboardHome";
 import DashboardTickets from "@/components/dashboard/content/tickets/DashboardTicketsPage";
 import DashboardUsers from "@/components/dashboard/content/DashboardUsers";
+import DashboardTicketThread from "@/components/dashboard/content/tickets/DashboardTicketThread";
 
 export default function DashboardPage() {
   const [org, setOrg] = useState({});
@@ -15,8 +16,8 @@ export default function DashboardPage() {
   var router = useRouter();
   const filterData = router.query.dashboard;
   const dashboardSlug = filterData[0];
-  const dashboardPage = filterData[1];
-  //console.log(filterData);
+  const page = filterData[1];
+  const subPage = filterData[2];
 
   useEffect(() => {
     const getOrgData = async () => {
@@ -35,12 +36,16 @@ export default function DashboardPage() {
   if (loading) {
     content = <div>Loading...</div>;
   } else {
-    switch (dashboardPage) {
+    switch (page) {
       case "home":
         content = <DashboardHome orgId={org.id} />;
         break;
       case "tickets":
-        content = <DashboardTickets org={org} />;
+        if (subPage) {
+          content = <DashboardTicketThread org={org} ticketId={subPage} />;
+        } else {
+          content = <DashboardTickets org={org} />;
+        }
         break;
       case "users":
         content = <DashboardUsers orgId={org.id} />;

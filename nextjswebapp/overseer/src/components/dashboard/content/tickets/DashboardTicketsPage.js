@@ -3,14 +3,9 @@ import ContentList from "../ContentList";
 import TicketListItem from "./TicketListItem";
 import capitalize from "@/helpers/capitalize";
 import { getTicketsByOrg } from "@/api/ticketsApi";
-import TicketCreateForm from "./TicketCreateForm";
-import TicketFilterForm from "./TicketFilterForm";
-import {
-  BsChevronDown,
-  BsChevronLeft,
-  BsFillPlusCircleFill,
-  BsEmojiDizzy,
-} from "react-icons/bs";
+import TicketCreateForm from "./forms/TicketCreateForm";
+import TicketFilterForm from "./forms/TicketFilterForm";
+import { BsEmojiDizzy } from "react-icons/bs";
 
 export default function DashboardTicketsPage({ org }) {
   const [tickets, setTickets] = useState([]);
