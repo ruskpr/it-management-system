@@ -1,7 +1,5 @@
-import { useSession } from "next-auth/react";
 import { useState } from "react";
 import Button from "@/components/ui/Button";
-import Spinner from "@/components/ui/Spinner";
 import { FaFilter } from "react-icons/fa";
 import { BsChevronDown, BsChevronLeft } from "react-icons/bs";
 import { getTicketsData } from "@/api/ticketsApi";
@@ -45,10 +43,11 @@ export default function TicketFilterForm({ setTickets }) {
           .includes(searchFlags.title.toLowerCase());
       });
     }
+    
     //filter by ticket type
     if (searchFlags.ticketType !== "") {
       filteredTickets = filteredTickets.filter((ticket) => {
-        return ticket.ticketType === searchFlags.ticketType;
+        return ticket.type === searchFlags.ticketType;
       });
     }
 
@@ -109,12 +108,11 @@ export default function TicketFilterForm({ setTickets }) {
             Search
           </Button>
           <Button
-
+            secondary
             rounded
             type="reset"
             className="border-0 mt-3 ml-3"
             onClick={async () => {
-
               setSearchFlags({
                 title: "",
                 ticketType: "",
@@ -122,7 +120,9 @@ export default function TicketFilterForm({ setTickets }) {
               });
               setTickets(await getTicketsData());
             }}
-          >Reset filters</Button>
+          >
+            Reset filters
+          </Button>
         </div>
       </form>
     );
