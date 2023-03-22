@@ -1,28 +1,27 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useSession, getSession } from "next-auth/react";
-import { getOrgByName, getOrgById } from "@/api/orgsApi";
+import { getSession } from "next-auth/react";
+import { getOrgById } from "@/api/orgsApi";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import DashboardHome from "@/components/dashboard/content/DashboardHome";
 import DashboardTickets from "@/components/dashboard/content/tickets/DashboardTicketsPage";
 import DashboardUsers from "@/components/dashboard/content/DashboardUsers";
 import DashboardTicketThread from "@/components/dashboard/content/tickets/DashboardTicketThread";
+import ProfilePage from "@/components/dashboard/content/profile/ProfilePage";
 
 export default function DashboardPage() {
   const [org, setOrg] = useState({});
   const [loading, setLoading] = useState(true);
-  const { data: session, status } = useSession();
 
   var router = useRouter();
-  const filterData = router.query.dashboard;
-  const dashboardSlug = filterData[0];
-  const page = filterData[1];
-  const subPage = filterData[2];
+  const slug = router.query.dashboard;
+  const orgIdSlug = slug[0]; // this is the org id
+  const page = slug[1];
+  const subPage = slug[2];
 
   useEffect(() => {
     const getOrgData = async () => {
-      //const orgData = await getOrgByName(dashboardSlug.replaceAll("_", " "));
-      const orgData = await getOrgById(dashboardSlug);
+      const orgData = await getOrgById(orgIdSlug);
       setOrg(orgData);
       setLoading(false);
     };
@@ -38,7 +37,7 @@ export default function DashboardPage() {
   } else {
     switch (page) {
       case "home":
-        content = <DashboardHome orgId={org.id} />;
+        content = <DashboardHome org={org} />;
         break;
       case "tickets":
         if (subPage) {
@@ -48,7 +47,10 @@ export default function DashboardPage() {
         }
         break;
       case "users":
-        content = <DashboardUsers orgId={org.id} />;
+        content = <DashboardUsers org={org} />;
+        break;
+      case "profile":
+        content = <ProfilePage org={org} />;
         break;
       default:
         router.push("/dashboard/login");

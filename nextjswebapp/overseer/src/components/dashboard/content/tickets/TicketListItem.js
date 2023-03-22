@@ -4,9 +4,8 @@ import capitalize from "@/helpers/capitalize";
 import dateFormat from "@/helpers/dateFormat";
 import { updateTicket } from "@/api/ticketsApi";
 
-export default function TicketListItem({ ticket }) {
+export default function TicketListItem({ ticket, creator }) {
   const [active, setActive] = useState(ticket.isActive);
-
   const router = useRouter();
 
   const handleActiveToggle = async () => {
@@ -21,8 +20,7 @@ export default function TicketListItem({ ticket }) {
   return (
     <li
       className="block w-full p-6 mb-3 bg-white border border-gray-200 
-    rounded shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700
-     dark:hover:bg-gray-700"
+    rounded shadow dark:bg-gray-800 dark:border-gray-700"
     >
       <h5
         className="text-2xl font-bold tracking-tight text-gray-900 
@@ -47,9 +45,12 @@ export default function TicketListItem({ ticket }) {
         <div className="cursor-pointer w-24" onClick={handleActiveToggle}>
           {active ? "Active🟢" : "Inactive🔘"}
         </div>
-        <p className="underline cursor-pointer" onClick={() => {
-          router.push(`${router.asPath}/${ticket.id}`)
-        }}>
+        <p
+          className="underline cursor-pointer"
+          onClick={() => {
+            router.push(`${router.asPath}/${ticket.id}`);
+          }}
+        >
           See thread
         </p>
       </div>

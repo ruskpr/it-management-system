@@ -18,16 +18,13 @@ export default function DashboardHeader({ org }) {
           <span className="font-light text-gray-300"> Dashboard</span>
         </div>
         <div className="text-center font-bold">
-          <h1>{org.name}</h1>
+          <h1>{org.name ? capitalize(org.name) : ""}</h1>
         </div>
       </div>
 
       {/* nav */}
       <div className="flex h-full items-center justify-center">
-        <DashboardNavItem
-          className="px-2"
-          href={`/dashboard/${org.id}/home`}
-        >
+        <DashboardNavItem className="px-2" href={`/dashboard/${org.id}/home`}>
           Home
         </DashboardNavItem>
         <DashboardNavItem
@@ -36,11 +33,14 @@ export default function DashboardHeader({ org }) {
         >
           Tickets
         </DashboardNavItem>
+        <DashboardNavItem className="px-2" href={`/dashboard/${org.id}/users`}>
+          Users
+        </DashboardNavItem>
         <DashboardNavItem
           className="px-2"
-          href={`/dashboard/${org.id}/users`}
+          href={`/dashboard/${org.id}/profile`}
         >
-          Users
+          My Profile
         </DashboardNavItem>
       </div>
     </div>

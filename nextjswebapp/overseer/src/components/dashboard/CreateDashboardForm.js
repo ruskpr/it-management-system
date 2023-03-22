@@ -13,6 +13,7 @@ const baseUrl = "https://localhost:7083/";
 export default function CreateDashboardForm() {
   const { data: session, status } = useSession();
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [inputs, setInputs] = useState({
     orgName: "",
     accessKey: "",
@@ -25,38 +26,59 @@ export default function CreateDashboardForm() {
     setInputs({ ...inputs, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    
-    // pw validation
+  const runValidation = () => {
+    if (inputs.orgName === "") {
+      setErrorMsg("Organization name is required");
+      return false;
+    }
+    if (inputs.accessKey === "") {
+      setErrorMsg("Access key is required");
+      return false;
+    }
+    if (inputs.confirmAccessKey === "") {
+      setErrorMsg("Confirm access key is required");
+      return false;
+    }
     if (
       inputs.accessKey.length < 5 ||
       inputs.accessKey !== inputs.confirmAccessKey
+    ) {
+      setErrorMsg("Access keys must match and contain more that 4 characters");
+      return false;
+    }
+
+    //org name validation
+    if (inputs.orgName.length < 6) {
+      setErrorMsg("Organization name must be greater that 5 characters");
+      return false;
+    }
+
+    // if all passes, return true
+    return true;
+  };
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (runValidation() === false) {
+      return;
+    }
+
+    const orgsData = await getOrgsData();
+
+    // compare api data with inputs
+    for (var i = 0; i < orgsData.length; i++) {
+      if (
+        orgsData[i].name.toLocaleLowerCase() ===
+        inputs.orgName.toLocaleLowerCase()
       ) {
-        window.alert("Access keys must match and contain more that 4 characters");
+        window.alert(`${inputs.orgName} already exists.`);
         return;
       }
-      
-      //org name validation
-      if (inputs.orgName.length < 6) {
-        window.alert("Organization name must be greater that 5 characters");
-        return;
-      }
-      
-      const orgsData = await getOrgsData();
-      
-      // compare api data with inputs
-      for (var i = 0; i < orgsData.length; i++) {
-        if (
-          orgsData[i].name.toLocaleLowerCase() ===
-          inputs.orgName.toLocaleLowerCase()
-          ) {
-            window.alert(`${inputs.orgName} already exists.`);
-            return;
-          }
-        }
-        
-        // if all passes, create org and redirect user
+    }
+
+    // if all passes, create org and redirect user
     setLoading(true);
     const newOrg = {
       name: inputs.orgName,
@@ -66,11 +88,10 @@ export default function CreateDashboardForm() {
     };
 
     await createOrg(newOrg);
-    
+
     setLoading(false);
 
     router.push("/dashboard/login");
-
   };
 
   return (
@@ -112,7 +133,7 @@ export default function CreateDashboardForm() {
             value={inputs.confirmAccessKey}
           />
         </div>
-        <div className="flex items-start"></div>
+        <h2 className="mb-2 text-red-600 font-bold">{errorMsg}</h2>
         <div className="flex justify-center">
           <Button primary rounded type="submit" className="border-0">
             Create{loading && <Spinner className="ml-2" />}

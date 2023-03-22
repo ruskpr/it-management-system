@@ -4,6 +4,8 @@ import {
   FcBullish,
   FcWorkflow,
   FcConferenceCall,
+  FcLock,
+  FcSmartphoneTablet
 } from "react-icons/fc";
 
 function FeaturesBlocks() {
@@ -35,10 +37,10 @@ function FeaturesBlocks() {
             <div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
               <FcOvertime className="text-6xl mb-3" />
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                Initial Contact
+                Productivity
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Boost your team's ability to perform their tasks.
               </p>
             </div>
 
@@ -46,10 +48,10 @@ function FeaturesBlocks() {
             <div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
               <FcBullish className="text-6xl mb-3" />
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                Discovery Session
+                Efficiency
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Produce, process, develop efficiently with ease.
               </p>
             </div>
 
@@ -57,10 +59,10 @@ function FeaturesBlocks() {
             <div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
               <FcWorkflow className="text-6xl mb-3" />
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                Contracting
+                Connect with your team
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Communicate and stay on track with your team members.
               </p>
             </div>
 
@@ -68,30 +70,30 @@ function FeaturesBlocks() {
             <div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
               <FcConferenceCall className="text-6xl mb-3" />
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                Fast Prototyping
+                Cooperation
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Develop and maintain projects together.
               </p>
             </div>
             {/* 5th item */}
             <div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
-              <FcConferenceCall className="text-6xl mb-3" />
+              <FcSmartphoneTablet className="text-6xl mb-3" />
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                Fast Prototyping
+                Cross-Platform
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Access from any device, anywhere.
               </p>
             </div>
             {/* 5th item */}
             <div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
-              <FcConferenceCall className="text-6xl mb-3" />
+              <FcLock className="text-6xl mb-3" />
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                Fast Prototyping
+                Security
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Securely access your teams dashboard.
               </p>
             </div>
           </div>

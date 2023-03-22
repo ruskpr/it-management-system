@@ -27,7 +27,7 @@ export default function SignUpPage() {
         <div className="flex flex-col justify-center items-center gap-3">
           <h1 className="text-3xl font-bold">Sign in to Overseer</h1>
           <p>
-            Overseer users are managed by thier connected Github account, we
+            Overseer users are managed by thier connected Github accounts, we
             only use your github name to connect you to your organizations
           </p>
           <p>

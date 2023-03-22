@@ -29,13 +29,13 @@ export default function DashboardTicketsPage({ org }) {
       <div className="flex flex-col items-center justify-center w-full h-64">
         <BsEmojiDizzy className="text-6xl text-gray-300" />
         <h2 className="mt-3 text-2xl font-bold text-gray-300 text-center">
-          No tickets found, try searching for something else
+          No tickets found, create one!
         </h2>
       </div>
     );
   } else {
-    renderedTickets = tickets.map((ticket) => {
-      return <TicketListItem key={ticket.id} ticket={ticket} />;
+    renderedTickets = tickets.map((ticket, index) => {
+      return <TicketListItem key={index} ticket={ticket} />;
     });
   }
 

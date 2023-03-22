@@ -22,7 +22,7 @@ export default function Button({
         neutral,
       "border-green-400 bg-green-500 text-white hover:bg-green-600": success,
       "border-yellow-400 bg-yellow-500 text-white hover:bg-yellow-600": warning,
-      "border-red-400 bg-red-500 text-white hover:bg-red-600": danger,
+      "border-red-400 bg-red-700 text-white hover:bg-red-700": danger,
       "rounded": rounded,
       "bg-transparent hover:bg-transparent": outline,
       "text-blue-300": outline && primary,
@@ -30,7 +30,7 @@ export default function Button({
       "text-gray-200": outline && neutral,
       "text-green-400": outline && success,
       "text-yellow-500": outline && warning,
-      "text-red-500": outline && danger,
+      "text-red-700": outline && danger,
     },
     rest.className, // <-- additional classes
   );

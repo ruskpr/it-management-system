@@ -1,34 +1,51 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import capitalize from "@/helpers/capitalize";
 import dateFormat from "@/helpers/dateFormat";
-import { updateTicket } from "@/api/ticketsApi";
+import { getUserById } from "@/api/usersApi";
+import { deleteCommentById } from "@/api/ticketCommentsApi";
+import { BsXLg } from "react-icons/bs";
+import Button from "@/components/ui/Button";
 
-export default function CommentCard({ comment }) {
+export default function CommentCard({ comment, setComments }) {
   const { data: session, status } = useSession();
-  //   const isCreator = session.user.name === comment.creator;
+  const [creator, setCreator] = useState("");
+  let isCreator;
+
+  useEffect(() => {
+    const getUser = async () => {
+      const user = await getUserById(comment.creatorId);
+      setCreator(user.name);
+      isCreator = session.user.name === creator;
+    };
+    getUser();
+  });
+
+  const handleDelete = async () => {
+    await deleteCommentById(comment.id);
+    setComments((prev) => prev.filter((c) => c.id !== comment.id));
+  };
 
   return (
-    <li
-      className="block w-full p-6 mb-3 bg-white border border-gray-200 
-    rounded shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700
-     dark:hover:bg-gray-700"
-    >
-      <h5
-        className="text-2xl font-bold tracking-tight text-gray-900 
-      dark:text-white"
-      >
-        {capitalize(comment.text)}
-      </h5>
-
-      <div className="flex flex-row justify-start gap-1 text-gray-400">
-        <p className="font-normal">
-          Created by {comment.creator}
-        </p>{" "}
-        <span>| {dateFormat(comment.dateAdded)}</span>
+    <li className="relative block border-t py-4 px-2">
+      <div className="flex gap-1 flex-wrap text-wrap">
+        <span className="font-semibold">{creator}</span>
+        <span className="text-gray-400 font-light">
+          {dateFormat(comment.dateAdded)}
+        </span>
+      </div>
+      <div>
+        <p className="text-gray-500">{comment.text}</p>
       </div>
 
-      <div className="flex justify-between font-normal text-gray-300"></div>
+      {/* remove button for creator of comment */}
+      {isCreator || (
+        <Button
+          onClick={handleDelete}
+          className="absolute right-5 top-3 text-gray-500 hover:text-red-500 m-0 p-0 rounded"
+        >
+          <BsXLg />
+        </Button>
+      )}
     </li>
   );
 }

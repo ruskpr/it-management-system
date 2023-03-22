@@ -109,23 +109,19 @@ function Testimonials() {
               </div>
             </div>
           </div>
-          {/* Items */}
-          
 
           {/* Testimonials */}
           <div className="max-w-3xl mx-auto mt-20" data-aos="zoom-y-out">
             <div className="relative flex items-start border-2 border-gray-200 rounded bg-white">
               {/* Testimonial */}
-              <div className="text-center px-12 py-8 pt-20 mx-4 md:mx-0">
+              <div className="flex justify-center flex-col w-full text-center px-12 py-8 pt-20 mx-4 md:mx-0">
                 <div className="absolute top-0 -mt-8 left-1/2 transform -translate-x-1/2"></div>
                 <blockquote className="text-xl font-medium mb-4">
                   <div className="flex pl-8 mt-3 top-0 text-5xl justify-center text-gray-600 gap-6 absolute">
                     <ImQuotesLeft />
                     <ImQuotesRight />
                   </div>
-                  "If your are reading this I would like to personally thank
-                  your for visiting my website. Enjoy your stay and consider
-                  subscibing to the newsletter."
+                  "Its fantastic."
                 </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1">
                   Russ K.

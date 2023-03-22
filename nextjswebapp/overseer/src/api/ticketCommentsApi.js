@@ -13,11 +13,9 @@ const getCommentsData = async () => {
 
 // create ticket comment
 const createComment = async (commentObj) => {
-  const newComment = await axios
-    .post(baseUrl + endpoint, commentObj)
-    .catch((e) => {
-      console.error(e);
-    });
+  await axios.post(baseUrl + endpoint, commentObj).catch((e) => {
+    console.error(e);
+  });
 };
 
 // get ticket comments by ticket id
@@ -28,7 +26,7 @@ const getCommentsByTicketId = async (ticketId) => {
 
   // filter comments by ticket id
   const filteredComments = ticketComments.data.filter(
-    (ticket) => ticket.ticketId === ticketId
+    (ticket) => ticket.ticketId == ticketId
   );
 
   return filteredComments;
@@ -45,7 +43,15 @@ const getCommentsByUserId = async (userId) => {
   return ticketComments.data;
 };
 
+// delete ticket comment by id
+const deleteCommentById = async (id) => {
+  await axios.delete(baseUrl + endpoint + id).catch((e) => {
+    console.error(e);
+  });
+};
+
 export {
+  deleteCommentById,
   createComment,
   getCommentsData,
   getCommentsByUserId,

@@ -10,6 +10,7 @@ import { sha256 } from "js-sha256";
 export default function LoginForm() {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [inputs, setInputs] = useState({
     orgName: "",
     accessKey: "",
@@ -21,8 +22,23 @@ export default function LoginForm() {
     setInputs({ ...inputs, [event.target.name]: event.target.value });
   };
 
+  const runValidation = () => {
+    if (inputs.orgName === "") {
+      setErrorMsg("Organization name is required");
+      return false;
+    }
+    if (inputs.accessKey === "") {
+      setErrorMsg("Access key is required");
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // check for validation
+    if (!runValidation()) return;
 
     // get organizations
     const orgsData = await getOrgsData();
@@ -57,7 +73,7 @@ export default function LoginForm() {
       }
     }
 
-    window.alert("Incorrect organization and/or access key.");
+    setErrorMsg("Incorrect organization and/or access key.");
     setLoading(false);
   };
 
@@ -89,7 +105,7 @@ export default function LoginForm() {
             value={inputs.accessKey}
           />
         </div>
-        <div className="flex items-start"></div>
+        <h2 className="mb-2 text-red-600 font-bold">{errorMsg}</h2>
         <div className="flex justify-center">
           <Button primary rounded type="submit" className="border-0">
             Login{loading && <Spinner className="ml-2" />}

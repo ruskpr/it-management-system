@@ -29,7 +29,7 @@ function HeroHome() {
     headerTwo = "";
     desc = "";
     button = (
-      <Button neutral rounded noBorder>
+      <Button neutral rounded>
         <Link href="/dashboard/login" className="flex items-center">
           Go to my dashboard
           <span className="ml-3 text-2xl">
@@ -70,7 +70,7 @@ function HeroHome() {
       "Develop and maintain your team with a reliable and secure groundwork to facilitate the collection, storage, security and integrity of electronic data.";
 
     button = (
-      <Button neutral rounded noBorder>
+      <Button neutral rounded>
         <Link href="/auth/signup" className="flex items-center">
           Get started for free
           <span className="ml-3 text-2xl">

@@ -16,6 +16,8 @@ const getTicketsByOrg = async (orgId) => {
     console.error(e);
   });
 
+  // filter tickets by org id
+  tickets.data = tickets.data.filter((ticket) => ticket.organizationId == orgId);
   return tickets.data;
 };
 

@@ -48,7 +48,8 @@ export default function TicketCreateForm({ org, setTickets }) {
     };
 
     await createTicket(newTicket);
-    // update tickets
+
+    //update tickets state
     setTickets((prev) => [newTicket, ...prev]);
 
     setLoading(false);
