@@ -51,7 +51,6 @@ export default function CommentCreateForm({
     <div className="bg-gray-800 rounded p-3">
       <form method="post" onSubmit={handleSubmit}>
         {/* Title */}
-
         <input
           maxLength={100}
           className="w-full min-h-16 pl-3 py-2 mb-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"

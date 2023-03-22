@@ -43,7 +43,7 @@ export default function TicketFilterForm({ setTickets }) {
           .includes(searchFlags.title.toLowerCase());
       });
     }
-    
+
     //filter by ticket type
     if (searchFlags.ticketType !== "") {
       filteredTickets = filteredTickets.filter((ticket) => {
