@@ -10,7 +10,7 @@ import {
   BsFillPlusCircleFill,
 } from "react-icons/bs";
 
-export default function TicketCreateForm({ org, setTickets }) {
+export default function TicketCreateForm({ org, fetchTickets }) {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const [showCreateFrom, setShowCreateForm] = useState(false);
@@ -50,7 +50,8 @@ export default function TicketCreateForm({ org, setTickets }) {
     await createTicket(newTicket);
 
     //update tickets state
-    setTickets((prev) => [newTicket, ...prev]);
+    fetchTickets();
+    //setTickets((prev) => [newTicket, ...prev]);
 
     setLoading(false);
 

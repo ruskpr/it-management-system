@@ -8,6 +8,7 @@ export default function TicketListItem({ ticket, creator }) {
   const [active, setActive] = useState(ticket.isActive);
   const router = useRouter();
 
+
   const handleActiveToggle = async () => {
     const newTicket = {
       ...ticket,

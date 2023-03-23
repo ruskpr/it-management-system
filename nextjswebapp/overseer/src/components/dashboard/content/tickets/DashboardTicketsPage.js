@@ -10,12 +10,13 @@ import { BsEmojiDizzy } from "react-icons/bs";
 export default function DashboardTicketsPage({ org }) {
   const [tickets, setTickets] = useState([]);
   // fetch tickets data on first render
-  useEffect(() => {
-    const fetchTickets = async () => {
-      const tickets = await getTicketsByOrg(org.id);
-      setTickets(tickets);
-    };
 
+  const fetchTickets = async () => {
+    const tickets = await getTicketsByOrg(org.id);
+    setTickets(tickets);
+  };
+
+  useEffect(() => {
     fetchTickets();
   }, []);
 
@@ -47,7 +48,7 @@ export default function DashboardTicketsPage({ org }) {
         </h1>
         <div>
           <div className="my-1">
-            <TicketCreateForm org={org} setTickets={setTickets} />
+            <TicketCreateForm org={org} fetchTickets={fetchTickets} />
           </div>
           <div className="my-1">
             <TicketFilterForm setTickets={setTickets} />
