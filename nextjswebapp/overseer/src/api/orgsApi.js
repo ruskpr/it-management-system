@@ -8,8 +8,6 @@ const getOrgsData = async () => {
   const res = await axios.get(baseUrl + endpoint).catch((e) => {
     console.error(e);
   });
-  //console.log("response:\n");
-  //console.log(res.data);
 
   return res.data;
 };
@@ -27,9 +25,10 @@ const getOrgByName = async (orgName) => {
   const orgs = await axios.get(`${baseUrl}${endpoint}`).catch((e) => {
     console.error(e);
   });
+
   for (let i = 0; i < orgs.data.length; i++) {
     if (orgs.data[i].name.toLowerCase() == orgName.toLowerCase()) {
-      //console.log(orgs.data[i]);
+
       return orgs.data[i];
     }
   }
@@ -52,12 +51,11 @@ const createOrg = async (orgObj) => {
   const response = await axios.post(baseUrl + endpoint, orgObj).catch((e) => {
     console.error(e.response);
   });
-  // console.log(response);
+  
 };
 
 const updateOrg = async (orgObj) => {
-  const response = await axios.put(baseUrl + endpoint, orgObj);
-  // console.log(response);
+  await axios.put(baseUrl + endpoint, orgObj);
 };
 
 export { getOrgsData, getOrgById, createOrg, getOrgByName, updateOrg };
